@@ -12,6 +12,7 @@ environment:
 
 requirements: environment
 	$(PIP_BIN) install -r requirements/base.txt
+	$(PIP_BIN) install -r requirements/$(TARGET).txt
 
 database: requirements
 	$(MANAGE_PY) syncdb --noinput
