@@ -10,7 +10,12 @@ export DJANGO_SETTINGS_MODULE=casevo.settings.$(TARGET)
 environment:
 	test -d "$(VIRTUALENV_DIR)" || $(VIRTUALENV_BIN) --distribute --no-site-packages --python $(PYTHON_BIN) $(VIRTUALENV_DIR)
 
+requirements: environment
+	$(PIP_BIN) install -r requirements/base.txt
+
+database: requirements
+	$(MANAGE_PY) syncdb --noinput --settings=$(SETTINGS_PARAM)
 
 serve: server
-server:
+server: database
 	$(MANAGE_PY) runserver 0.0.0.0:8000
