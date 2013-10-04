@@ -1,5 +1,6 @@
 TARGET?=development
-PYHON_BIN=python
+PYTHON_BIN?=python
+VIRTUALENV_BIN?=virtualenv
 VIRTUALENV_DIR=env
 MANAGE_PY=$(VIRTUALENV_DIR)/bin/python manage.py
 PIP_BIN=$(VIRTUALENV_DIR)/bin/pip
