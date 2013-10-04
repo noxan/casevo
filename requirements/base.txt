@@ -1,1 +1,2 @@
 django==1.5.4
+django-currencies==0.3.1
