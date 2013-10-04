@@ -121,6 +121,10 @@ EXTERNAL_APPS = (
     'currencies',
 )
 
+INTERNAL_APPS = (
+    'casevo.transactions',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -131,7 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-) + EXTERNAL_APPS
+) + EXTERNAL_APPS + INTERNAL_APPS
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
