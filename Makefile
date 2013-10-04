@@ -14,7 +14,7 @@ requirements: environment
 	$(PIP_BIN) install -r requirements/base.txt
 
 database: requirements
-	$(MANAGE_PY) syncdb --noinput --settings=$(SETTINGS_PARAM)
+	$(MANAGE_PY) syncdb --noinput
 
 serve: server
 server: database
