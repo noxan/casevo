@@ -10,5 +10,7 @@ export DJANGO_SETTINGS_MODULE=casevo.settings.$(TARGET)
 environment:
 	test -d "$(VIRTUALENV_DIR)" || $(VIRTUALENV_BIN) --distribute --no-site-packages --python $(PYTHON_BIN) $(VIRTUALENV_DIR)
 
+
+serve: server
 server:
 	$(MANAGE_PY) runserver 0.0.0.0:8000
