@@ -12,3 +12,6 @@ class Transaction(models.Model):
 
     class Meta:
         unique_together = (('date', 'source', 'target', 'value', 'description'),)
+
+    def __unicode__(self):
+        return self.date
