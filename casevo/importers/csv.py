@@ -27,6 +27,8 @@ class ImporterCSV(object):
             self.process_line(line)
 
     def process_line(self, line):
+        logger.debug("Processing line: %s" % (line))
+
         fields = line.replace('"', '').split(';')
 
         currency, created = Currency.objects.get_or_create(code=fields[9], defaults={'name': fields[9], 'factor': 1})
