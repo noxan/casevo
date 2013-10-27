@@ -34,10 +34,14 @@ class ImporterCSV(object):
         source, created = Account.objects.get_or_create(identifier=fields[0], defaults={'currency': default_curreny})
         target, created = Account.objects.get_or_create(identifier=fields[5], defaults={'currency': currency})
 
+        transaction_date = datetime.strptime(fields[2], '%d.%m.%y').date()
+        transaction_value = Decimal(fields[8].strip().replace('-', '').replace(',', '.'))
+        transaction_description = fields[4]
+
         transaction = Transaction()
-        transaction.date = datetime.strptime(fields[2], '%d.%m.%y').date()
+        transaction.date = transaction_date
         transaction.source = source
         transaction.target = target
-        transaction.value = Decimal(fields[8].strip().replace('-', '').replace(',', '.'))
-        transaction.description = fields[4]
+        transaction.value = transaction_value
+        transaction.description = transaction_description
         transaction.save()
