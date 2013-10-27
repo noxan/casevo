@@ -1,3 +1,4 @@
+import codecs
 from datetime import datetime
 from decimal import Decimal
 
@@ -11,6 +12,12 @@ from casevo.transactions.models import Transaction
 class ImporterCSV(object):
     def __init__(self):
         self.default_curreny = Currency.objects.get(is_default=True)
+
+    def read(self, filename, encoding='windows-1252', skip_first_line=True):
+        f = codecs.open(filename, 'r', encoding)
+        for line in f.readlines()[1:]:
+            self.process_line(line.replace('\r', ''))
+
 
     def parse(self, text):
         lines = text.replace('\r', '').split('\n')
