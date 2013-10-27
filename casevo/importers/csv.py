@@ -38,10 +38,11 @@ class ImporterCSV(object):
         transaction_value = Decimal(fields[8].strip().replace('-', '').replace(',', '.'))
         transaction_description = fields[4]
 
-        transaction = Transaction()
-        transaction.date = transaction_date
-        transaction.source = source
-        transaction.target = target
-        transaction.value = transaction_value
-        transaction.description = transaction_description
-        transaction.save()
+        if not Transaction.objects.filter(source=source, target=target, date=transaction_date, value=transaction_value, description=transaction_description).exists():
+            transaction = Transaction()
+            transaction.date = transaction_date
+            transaction.source = source
+            transaction.target = target
+            transaction.value = transaction_value
+            transaction.description = transaction_description
+            transaction.save()
