@@ -17,6 +17,7 @@ requirements: environment
 
 database: requirements
 	$(MANAGE_PY) syncdb --noinput
+	$(MANAGE_PY) migrate --all
 
 serve: server
 server: database
