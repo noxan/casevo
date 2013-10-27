@@ -21,7 +21,6 @@ class ImporterCSV(object):
         for line in f.readlines()[1:]:
             self.process_line(line.replace('\r', ''))
 
-
     def parse(self, text):
         lines = text.replace('\r', '').split('\n')
         for line in lines:
