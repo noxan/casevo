@@ -118,6 +118,7 @@ TEMPLATE_DIRS = (
 )
 
 EXTERNAL_APPS = (
+    'south',
     'currencies',
 )
 
