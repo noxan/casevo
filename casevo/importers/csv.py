@@ -32,6 +32,9 @@ class ImporterCSV(object):
         currency, created = Currency.objects.get_or_create(code=fields[9], defaults={'name': fields[9], 'factor': 1})
 
         source, created = Account.objects.get_or_create(number=fields[0], defaults={'currency': self.default_curreny})
+        if created: # save number as identifier to avoid empty value
+            source.identifier = fields[0]
+            source.save()
         target, created = Account.objects.get_or_create(identifier=fields[5], number=fields[6], defaults={'currency': currency})
 
         transaction_date = datetime.strptime(fields[2], '%d.%m.%y').date()
