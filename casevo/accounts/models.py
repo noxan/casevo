@@ -9,4 +9,4 @@ class Account(models.Model):
     currency = models.ForeignKey(Currency, default=0)
 
     def __unicode__(self):
-        return self.identifier
+        return u'%s' % (self.identifier)
