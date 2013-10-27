@@ -8,10 +8,16 @@ from casevo.transactions.models import Transaction
 
 
 # "source";"date";"valuta date";"type";"title";"target";"target nummer";"target blz";"value";"currency";"info"
-def parse_csv(text):
-    default_curreny = Currency.objects.get(is_default=True)
-    lines = text.replace('\r', '').split('\n')
-    for line in lines:
+class ImporterCSV(object):
+    def __init__(self):
+        self.default_curreny = Currency.objects.get(is_default=True)
+
+    def parse(self, text):
+        lines = text.replace('\r', '').split('\n')
+        for line in lines:
+            self.process_line(line)
+
+    def process_line(self, line):
         fields = line.replace('"', '').split(';')
 
         currency, created = Currency.objects.get_or_create(code=fields[9], defaults={'name': fields[9], 'factor': 1})
