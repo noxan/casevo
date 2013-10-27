@@ -1,4 +1,5 @@
 import codecs
+import logging
 from datetime import datetime
 from decimal import Decimal
 
@@ -7,6 +8,8 @@ from currencies.models import Currency
 from casevo.accounts.models import Account
 from casevo.transactions.models import Transaction
 
+
+logger = logging.getLogger(__name__)
 
 # "source";"date";"valuta date";"type";"title";"target";"target nummer";"target blz";"value";"currency";"info"
 class ImporterCSV(object):
