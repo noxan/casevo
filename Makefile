@@ -19,6 +19,9 @@ database: requirements
 	$(MANAGE_PY) syncdb --noinput
 	$(MANAGE_PY) migrate --all
 
+shell:
+	$(MANAGE_PY) shell
+
 serve: server
 server: database
 	$(MANAGE_PY) runserver 0.0.0.0:8000
