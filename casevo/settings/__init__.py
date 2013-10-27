@@ -124,6 +124,7 @@ EXTERNAL_APPS = (
 
 INTERNAL_APPS = (
     'casevo.accounts',
+    'casevo.importers',
     'casevo.transactions',
 )
 
