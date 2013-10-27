@@ -14,4 +14,4 @@ class Transaction(models.Model):
         unique_together = (('date', 'source', 'target', 'value', 'description'),)
 
     def __unicode__(self):
-        return self.date
+        return u'%s' % (self.date)
