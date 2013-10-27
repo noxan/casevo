@@ -1,5 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 
+from casevo.importers.csv import ImporterCSV
+
 
 class Command(BaseCommand):
     help = "Import a csv file containing transactions."
@@ -11,4 +13,5 @@ class Command(BaseCommand):
 
         filename = args[0]
 
-        print filename
+        importer = ImporterCSV()
+        importer.read(filename)
