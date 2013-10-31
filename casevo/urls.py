@@ -9,7 +9,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', CasevoHomeView.as_view(), name='home'),
-    # url(r'^casevo/', include('casevo.foo.urls')),
+
+    url(r'^accounts/', include('casevo.accounts.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
