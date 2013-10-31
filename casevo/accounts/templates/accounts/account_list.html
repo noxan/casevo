@@ -1,8 +1,28 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 
 {% block content %}
-{% for account in account_list %}
-{{account}}
-{% endfor %}
+<div class="page-header">
+  <h1>{% trans "Accounts" %}</h1>
+</div>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>{% trans "Identifier" %}</th>
+      <th>{% trans "Number" %}</th>
+      <th>{% trans "BLZ" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for account in account_list %}
+    <tr>
+      <td>{{account.identifier}}</td>
+      <td>{{account.number}}</td>
+      <td>{{account.blz}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}
