@@ -10,7 +10,9 @@
     <![endif]-->
   </head>
   <body>
+    {% block content %}
     <h1>Hello, world!</h1>
+    {% endblock %}
     <script src="{{STATIC_URL}}js/jquery-2.0.3.min.js"></script>
     <script src="{{STATIC_URL}}bootstrap/js/bootstrap.min.js"></script>
   </body>
