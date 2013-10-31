@@ -31,6 +31,9 @@ class ImporterCSV(object):
 
         fields = line.replace('"', '').split(';')
 
+        if fields[3] == u"ABSCHLUSS":
+            return
+
         currency, created = Currency.objects.get_or_create(code=fields[9], defaults={'name': fields[9], 'factor': 1})
 
         source, created = Account.objects.get_or_create(number=fields[0], defaults={'currency': self.default_curreny})
