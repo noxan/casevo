@@ -2,12 +2,13 @@ from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
 
+from casevo.common.views import CasevoHomeView
+
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'casevo.views.home', name='home'),
+    url(r'^$', CasevoHomeView.as_view(), name='home'),
     # url(r'^casevo/', include('casevo.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
