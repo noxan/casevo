@@ -37,7 +37,7 @@ class ImporterCSV(object):
         if created: # save number as identifier to avoid empty value
             source.identifier = fields[0]
             source.save()
-        target, created = Account.objects.get_or_create(identifier=fields[5], number=fields[6], defaults={'currency': currency})
+        target, created = Account.objects.get_or_create(number=fields[6], blz=fields[7], defaults={'currency': currency, 'identifier': fields[5]})
 
         transaction_date = datetime.strptime(fields[2], '%d.%m.%y').date()
         transaction_value = Decimal(fields[8].strip().replace('-', '').replace(',', '.'))
