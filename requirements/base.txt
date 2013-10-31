@@ -1,3 +1,4 @@
 django==1.5.5
 django-currencies==0.3.1
 south==0.8.2
+django-bootstrap-static-files>=3.0.0
