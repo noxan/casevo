@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^$', CasevoHomeView.as_view(), name='home'),
 
     url(r'^accounts/', include('casevo.accounts.urls', namespace='accounts')),
+    url(r'^transactions/', include('casevo.transactions.urls', namespace='transactions')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

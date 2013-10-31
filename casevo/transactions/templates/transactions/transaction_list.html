@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+
+{% block content %}
+<div class="page-header">
+  <h1>{% trans "Transactions" %}</h1>
+</div>
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>{% trans "Date" %}</th>
+      <th>{% trans "Source" %}</th>
+      <th>{% trans "Target" %}</th>
+      <th>{% trans "Value" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transaction in transaction_list %}
+    <tr>
+      <td>{{transaction.date}}</td>
+      <td>{{transaction.source}}</td>
+      <td>{{transaction.target}}</td>
+      <td>{{transaction.value|floatformat:2}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
