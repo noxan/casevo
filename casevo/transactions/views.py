@@ -4,4 +4,5 @@ from casevo.transactions.models import Transaction
 
 
 class TransactionListView(ListView):
-    model = Transaction
+    def get_queryset(self):
+        return Transaction.objects.select_related().all()
