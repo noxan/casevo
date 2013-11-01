@@ -14,3 +14,6 @@ class Account(models.Model):
 
     def __unicode__(self):
         return u'%s' % (self.identifier)
+
+    def balance(self):
+        return sum([k['value'] for k in self.transactions_in.values('value')]) - sum([k['value'] for k in self.transactions_out.values('value')])
