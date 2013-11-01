@@ -141,6 +141,7 @@ INTERNAL_APPS = (
     'casevo.accounts',
     'casevo.importers',
     'casevo.transactions',
+    'casevo.statistics',
 )
 
 INSTALLED_APPS = (
