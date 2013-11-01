@@ -7,7 +7,7 @@
 <div class="page-header">
   <h1>{% trans "Accounts" %}</h1>
 </div>
-<table class="table table-condensed">
+<table class="table table-condensed table-hover table-clickable">
   <thead>
     <tr>
       <th>{% trans "Identifier" %}</th>
@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     {% for account in account_list %}
-    <tr>
+    <tr href="{% url 'accounts:update' account.id %}">
       <td>{{account.identifier}}</td>
       <td>{{account.number}}</td>
       <td>{{account.blz}}</td>
@@ -25,4 +25,22 @@
     {% endfor %}
   </tbody>
 </table>
+{% endblock %}
+
+{% block js %}
+<script>
+  $(document).ready(function() {
+    $('table.table-clickable > tbody > tr').click(function() {
+      var href = $(this).attr('href');
+      if(href) {
+        window.location = href;
+      }
+    });
+  });
+</script>
+<style type="text/css">
+  .table-clickable tr {
+    cursor: pointer;
+  }
+</style>
 {% endblock %}
