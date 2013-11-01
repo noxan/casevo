@@ -46,6 +46,12 @@ class ImporterCSV(object):
         transaction_value = Decimal(fields[8].strip().replace(',', '.'))
         transaction_description = fields[4]
 
+        # reverse source and target on negative value
+        if transaction_value >= 0:
+            source, target = target, source
+        else:
+            transaction_value = 0 - transaction_value
+
         Transaction.objects.get_or_create(
             date=transaction_date,
             source=source,
