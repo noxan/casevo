@@ -13,6 +13,7 @@
       <th>{% trans "Identifier" %}</th>
       <th>{% trans "Number" %}</th>
       <th>{% trans "BLZ" %}</th>
+      <th>{% trans "Balance" %}</th>
     </tr>
   </thead>
   <tbody>
@@ -21,6 +22,7 @@
       <td>{{account.identifier}}</td>
       <td>{{account.number}}</td>
       <td>{{account.blz}}</td>
+      <td>{{account.balance}}</td>
     </tr>
     {% endfor %}
   </tbody>
