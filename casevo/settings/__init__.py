@@ -130,6 +130,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 EXTERNAL_APPS = (
     'bootstrap',
+    'bootstrapform',
     'bootstrapnavtags',
     'south',
     'currencies',
