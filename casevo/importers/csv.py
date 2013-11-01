@@ -43,7 +43,7 @@ class ImporterCSV(object):
         target, created = Account.objects.get_or_create(number=fields[6], blz=fields[7], defaults={'currency': currency, 'identifier': fields[5]})
 
         transaction_date = datetime.strptime(fields[2], '%d.%m.%y').date()
-        transaction_value = Decimal(fields[8].strip().replace('-', '').replace(',', '.'))
+        transaction_value = Decimal(fields[8].strip().replace(',', '.'))
         transaction_description = fields[4]
 
         if not Transaction.objects.filter(source=source, target=target, date=transaction_date, value=transaction_value, description=transaction_description).exists():
