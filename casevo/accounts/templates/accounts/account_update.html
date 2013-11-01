@@ -13,4 +13,39 @@
   {{form|bootstrap}}
   <input type="submit" class="btn btn-default">
 </form>
+<h2>Transactions</h2>
+<h3>Incoming</h3>
+<table class="table table-condensed">
+  <tr>
+    <th>Date</th>
+    <th>Source</th>
+    <th>Target</th>
+    <th>Value</th>
+  </tr>
+  {% for transaction in account.transactions_in.all %}
+  <tr>
+    <td>{{transaction.date}}</td>
+    <td>{{transaction.source}}</td>
+    <td>{{transaction.target}}</td>
+    <td>{{transaction.value}}</td>
+  </tr>
+  {% endfor %}
+</table>
+<h3>Outgoing</h3>
+<table class="table table-condensed">
+  <tr>
+    <th>Date</th>
+    <th>Source</th>
+    <th>Target</th>
+    <th>Value</th>
+  </tr>
+  {% for transaction in account.transactions_out.all %}
+  <tr>
+    <td>{{transaction.date}}</td>
+    <td>{{transaction.source}}</td>
+    <td>{{transaction.target}}</td>
+    <td>{{transaction.value}}</td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}
