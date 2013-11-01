@@ -12,6 +12,7 @@ class Transaction(models.Model):
 
     class Meta:
         unique_together = (('date', 'source', 'target', 'value', 'description'),)
+        ordering = ['-date']
 
     def __unicode__(self):
         return u'%s' % (self.date)
