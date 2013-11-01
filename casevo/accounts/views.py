@@ -5,7 +5,8 @@ from casevo.accounts.models import Account
 
 
 class AccountListView(ListView):
-    model = Account
+    def get_queryset(self):
+        return Account.objects.select_related('transactions_out', 'transactions_in').all()
 
 
 class AccountUpdateView(UpdateView):
