@@ -22,7 +22,7 @@
       <td>{{transaction.date}}</td>
       <td>{{transaction.source}}</td>
       <td>{{transaction.target}}</td>
-      <td>{{transaction.value|floatformat:2}}</td>
+      <td{% if transaction.value < 0 %} style="color: red;"{% endif %}>{{transaction.value|floatformat:2}}</td>
     </tr>
     {% endfor %}
   </tbody>
