@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+
+{% block content %}
+<div class="page-header">
+  <h1>{% trans "Statistics" %} <small>{% trans "Accounts pie chart" %}</h1>
+</div>
+<div id="flot-container" style="height: 500px;"></div>
+{% endblock %}
+
+
+{% block js %}
+<script src="{{STATIC_URL}}js/jquery.flot.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery.flot.pie.min.js"></script>
+<script>
+  function labelFormatter(label, series) {
+    return "<div style='font-size:8pt; text-align:center; padding:2px; color:#000;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+  }
+
+  $(document).ready(function() {
+    var data = [];
+    var counter = 0;
+
+    {% for account in accounts_out %}
+    data.push({
+      label: "{{account.identifier|truncatechars:15}}",
+      data: {{account.balance}}
+    });
+    {% endfor %}
+
+    var placeholder = $('#flot-container');
+
+    $.plot(placeholder, data, {
+      series: {
+        pie: {
+          show: true,
+          radius: 0.75,
+          innerRadius: 0,
+          label: {
+            show: true,
+            radius: 1,
+            formatter: labelFormatter,
+            background: {
+              opacity: 0.5,
+            },
+          },
+          combine: {
+            color: '#999',
+            threshold: 0.01
+          }
+        }
+      },
+      legend: {
+        show: false
+      }
+    });
+  });
+</script>
+{% endblock %}
+
